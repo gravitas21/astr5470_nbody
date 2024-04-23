@@ -5,6 +5,13 @@ import math
 import integrators as intg
 import argparse
 
+#TODO
+## Document the code in README and create a Github wiki page
+## Create input routines
+## Implement the integrators
+## Create output routines
+## Implement three non-trivial tests
+
 # Defining main function 
 def main(): 
     print("hey there")
