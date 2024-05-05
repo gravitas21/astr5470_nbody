@@ -3,25 +3,33 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 import integrators as intg
-
-from setup import read_input_file,read_command_line
+from setup import read_input_file,read_command_line,run_Nbody
+from plots import plot_orbit_xyplane
 
 #TODO
 ## Document the code in README and create a Github wiki page
-## Create input routines
 ## Implement the integrators
 ## Create output routines
 ## Implement three non-trivial tests
 
 # Defining main function
 def main():
-    ## Greet the user!
+    ## Greet the user in Nepali!
     print("Namaste!")
+
     ## Read command line arguments
-    inputfile,outputfile,algorithm = read_command_line()
+    inputfile,outputfile,integrator = read_command_line()
+
     ## Read the input file: input.txt
-    N_bodies,tend,delta_t,pos,vel = read_input_file(inputfile)
-    print(N_bodies,tend,delta_t,pos,vel)
+    N_bodies,M,pos,vel,tend,delta_t,tframe = read_input_file(inputfile)
+    print(N_bodies,M,pos.shape,vel.shape,tend,delta_t,tframe)
+
+    ## Run the N-body integration
+    positions, velocities, times = run_Nbody(N_bodies,M,pos,vel,tend,delta_t,tframe,integrator)
+    print(positions)
+
+    ## Plot the orbit
+    plot_orbit_xyplane(positions)
 
 # Using the special variable
 # __name__
