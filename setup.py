@@ -1,6 +1,23 @@
 # Importing libraries
 import numpy as np
+import argparse
 
+# Read command-line arguments
+def read_command_line():
+    # Create an ArgumentParser object
+    parser = argparse.ArgumentParser(description ='Run n-body integration for particles in input file using specified algorithm')
+    # Add an argument for each input
+    parser.add_argument('--init', type=str)
+    parser.add_argument('--out', type=str)
+    parser.add_argument('--alg', type=str)
+    # Parse the command-line arguments
+    args = parser.parse_args()
+    # Use the command-line arguments in your script
+    inputfile  = args.init
+    outputfile = args.out
+    algorithm  = args.alg
+    return inputfile,outputfile,algorithm
+    
 # Read initial_conditions
 def read_input_file(file):
     with open(file,'r') as f:

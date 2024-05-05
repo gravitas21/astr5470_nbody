@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 import integrators as intg
-import argparse
-from setup import read_input_file
+
+from setup import read_input_file,read_command_line
 
 #TODO
 ## Document the code in README and create a Github wiki page
@@ -15,20 +15,10 @@ from setup import read_input_file
 
 # Defining main function
 def main():
+    ## Greet the user!
     print("Namaste!")
-    # Create an ArgumentParser object
-    parser = argparse.ArgumentParser(description ='Run n-body integration for particles in input file using specified algorithm')
-    # Add an argument for each input
-    parser.add_argument('--init', type=str)
-    parser.add_argument('--out', type=str)
-    parser.add_argument('--alg', type=str)
-    # Parse the command-line arguments
-    args = parser.parse_args()
-    # Use the command-line arguments in your script
-    inputfile  = args.init
-    outputfile = args.out
-    algorithm  = args.alg
-
+    ## Read command line arguments
+    inputfile,outputfile,algorithm = read_command_line()
     ## Read the input file: input.txt
     N_bodies,tend,delta_t,pos,vel = read_input_file(inputfile)
     print(N_bodies,tend,delta_t,pos,vel)
