@@ -7,6 +7,8 @@ def read_input_file(file):
         lines = f.readlines()
         N_bodies,tend,delta_t = lines[0][:-1].split(',')
         N_bodies = int(N_bodies)
+        tend = float(tend)
+        delta_t = float(delta_t)
         M = np.zeros(N_bodies)
         pos = np.zeros((N_bodies,3))
         vel = np.zeros((N_bodies,3))
