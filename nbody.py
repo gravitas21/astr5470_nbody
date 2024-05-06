@@ -21,15 +21,15 @@ def main():
     inputfile,outputfile,integrator = read_command_line()
 
     ## Read the input file: input.txt
-    N_bodies,M,pos,vel,tend,delta_t,tframe = read_input_file(inputfile)
+    N_bodies,M,pos,vel,tend,delta_t,tframe,names = read_input_file(inputfile)
     print(N_bodies,M,pos.shape,vel.shape,tend,delta_t,tframe)
 
     ## Run the N-body integration
     positions, velocities, times = run_Nbody(N_bodies,M,pos,vel,tend,delta_t,tframe,integrator)
-    print(positions)
+    #print(positions)
 
     ## Plot the orbit
-    plot_orbit_xyplane(positions)
+    plot_orbit_xyplane(positions,names)
 
 # Using the special variable
 # __name__

@@ -21,10 +21,10 @@ def euler(p,v,delta_t,N_bodies,M):
     p, v = p + dpdt*delta_t, v + dvdt*delta_t
     return p, v
 
-def Nbody_derivatives(pos, vel, N_bodies,M):
+def Nbody_derivatives_twobody(pos, vel, N_bodies, M):
     """
     ODE equations governing our system:
-    Gravitational force equations for N-body system
+    Gravitational force equations for N-body system, N = 2
     """
     dpdt = vel
     G = 1.0
@@ -33,4 +33,26 @@ def Nbody_derivatives(pos, vel, N_bodies,M):
     rhat = (pos[1,:] - pos[0,:])/r
     dvdt[0,:]= G*M[1]/(r*r)*rhat
     dvdt[1,:]= -G*M[0]/(r*r)*rhat
+    #print(0,1,pos[0],pos[1],r,M[1],dvdt[0,:])
+    #print(1,0,pos[1],pos[0],r,M[0],dvdt[1,:])
+    return dpdt, dvdt
+
+def Nbody_derivatives(pos, vel, N_bodies, M):
+    """
+    ODE equations governing our system:
+    Gravitational force equations for N-body system
+    """
+    dpdt = vel
+    G = 1.0
+    dvdt = np.zeros(vel.shape)
+    for i in range(N_bodies) :
+        for j in range(N_bodies) :
+            if i == j :
+                continue
+            r = np.linalg.norm( pos[j]-pos[i])
+            mass = M[j]
+            rhat = (pos[j] - pos[i])/r
+            Fij = G*mass/(r*r)*rhat
+            #print(i,j,pos[i],pos[j],r,mass,Fij)
+            dvdt[i] += Fij
     return dpdt, dvdt

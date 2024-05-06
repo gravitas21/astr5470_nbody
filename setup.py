@@ -38,7 +38,8 @@ def read_input_file(file):
         vel[:,0] = lines[5][:-1].split(',')
         vel[:,1] = lines[6][:-1].split(',')
         vel[:,2] = lines[7][:-1].split(',')
-    return N_bodies,M,pos,vel,tend,delta_t,tframe
+        names = lines[8][:-1].split(',')
+    return N_bodies,M,pos,vel,tend,delta_t,tframe,names
 
 # Setup the N-body integration
 def run_Nbody(N_bodies,M,pos,vel,tend,delta_t,tframe,integrator):
@@ -59,7 +60,8 @@ def run_Nbody(N_bodies,M,pos,vel,tend,delta_t,tframe,integrator):
                 print("please specify either rk4 or euler only")
                 exit()
             t += delta_t
-            print(t,delta_t)
+            #print(t,delta_t)
+            #exit()
         positions.append(pos.copy())
         velocities.append(vel.copy())
         times.append(tnext)
