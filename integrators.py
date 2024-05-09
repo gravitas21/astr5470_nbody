@@ -102,7 +102,7 @@ def total_energy(pos, vel, N_bodies, M):
             if i == j :
                 continue
             r = np.linalg.norm( pos[j]-pos[i])
-            Eij = G*M[i]*M[j]/r
+            Eij = - G*M[i]*M[j]/r
             #print(i,j,r,Eij)
             totPE += Eij
     totE = totKE + 0.5*totPE
