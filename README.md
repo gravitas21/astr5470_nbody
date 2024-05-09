@@ -30,7 +30,10 @@ We can specify the integrator `alg` to be either `euler`,`rk4`,`leapfrog` or `he
 ## Reading the output
 Finally, the output file saves the simulated orbits for further analysis later on. The output file `output.txt` can be read with the `read_saved_orbits` function from `outputs.py` file as follows:
 
-`read_saved_orbits(outfile='output.txt')`
+```
+from outputs import read_saved_orbits
+read_saved_orbits(outfile='output.txt')
+```
 
 The first line of the output file specifies the names and masses of the particles in the simulation, separated by an underscore `_`. The following blocks store the positions and velocities of each particle for the snapshot specified in `# t = t_snap` line, where `t_snap` is the time of the snapshot. An example output file is shown below:
 
