@@ -102,4 +102,4 @@ def read_saved_orbits(outfile):
                 #exit()
         #print(N_bodies,names,masses,times)
         #print(positions)
-        return N_bodies,names,masses,positions,velocities
+        return N_bodies,names,masses,positions,velocities,times

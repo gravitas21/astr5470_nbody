@@ -1,4 +1,4 @@
-from integrators import rk4,euler,leapfrog,hermite
+from integrators import rk4,euler,leapfrog,hermite,total_energy
 from outputs import read_saved_orbits,plot_orbit_xyplane
 import matplotlib.pyplot as plt
 import numpy as np
@@ -82,7 +82,26 @@ def test_saved_orbits(outfile):
     Test if function to read the saved orbits gives orbits that match the calculated ones
     """
     ## Read the saved orbits
-    N_bodies,names,masses,positions,velocities = read_saved_orbits(outfile)
+    N_bodies,names,masses,positions,velocities,times = read_saved_orbits(outfile)
     ## Plot the orbits
     plot_orbit_xyplane(positions,names,test=True)
 test_saved_orbits(outfile='output.txt')
+
+def test_total_energy(outfile):
+    """
+    Test if the total energy of the system is conserved.
+    """
+    ## Read the saved orbits
+    N_bodies,names,masses,positions,velocities,times = read_saved_orbits(outfile)
+    total_energies = np.zeros(len(times))
+    for ind,time in enumerate(times):
+        totE = total_energy(positions[ind], velocities[ind], N_bodies, masses)
+        total_energies[ind] = totE
+        print(totE)
+    plt.figure()
+    plt.plot(times,total_energies)
+    plt.xlabel('time [arb.units]')
+    plt.ylabel('total energy of planetary system [arb.units]')
+    plt.ylim(0,totE*3)
+    plt.savefig('test_total_energy.jpg',bbox_inches='tight')
+test_total_energy(outfile='output.txt')
