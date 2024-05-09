@@ -1,4 +1,4 @@
-from integrators import rk4,euler
+from integrators import rk4,euler,leapfrog,hermite
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -21,6 +21,10 @@ def test_time_reversal(integrator):
             p, v = rk4(p,v,dt,N_bodies,M)
         elif integrator == 'euler':
             p, v = euler(p,v,dt,N_bodies,M)
+        elif integrator == 'leapfrog':
+            p, v = leapfrog(p,v,dt,N_bodies,M)
+        elif integrator == 'hermite':
+            p, v = hermite(p,v,dt,N_bodies,M)
         positions.append(p.copy())
         velocities.append(v.copy())
         times.append(t)
@@ -32,6 +36,10 @@ def test_time_reversal(integrator):
             p, v = rk4(p,v,-dt,N_bodies,M)
         elif integrator == 'euler':
             p, v = euler(p,v,-dt,N_bodies,M)
+        elif integrator == 'leapfrog':
+            p,v = leapfrog(p,v,-dt,N_bodies,M)
+        elif integrator == 'hermite':
+            p,v = hermite(p,v,-dt,N_bodies,M)
         rev_positions.append(p.copy())
         rev_velocities.append(v.copy())
         revtimes.append(revt)
@@ -60,3 +68,5 @@ def test_time_reversal(integrator):
     plt.show()
 test_time_reversal(integrator='rk4')
 test_time_reversal(integrator='euler')
+test_time_reversal(integrator='leapfrog')
+test_time_reversal(integrator='hermite')
