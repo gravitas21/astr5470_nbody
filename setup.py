@@ -1,7 +1,7 @@
 # Importing libraries
 import numpy as np
 import argparse
-from integrators import rk4,euler,Nbody_derivatives
+from integrators import rk4,euler,leapfrog,Nbody_derivatives
 
 # Read command-line arguments
 def read_command_line():
@@ -56,6 +56,8 @@ def run_Nbody(N_bodies,M,pos,vel,tend,delta_t,tframe,integrator):
                 pos, vel = euler(pos,vel,delta_t,N_bodies,M)
             elif integrator== "rk4":
                 pos, vel = rk4(pos,vel,delta_t,N_bodies,M)
+            elif integrator=="leapfrog":
+                pos, vel = leapfrog(pos,vel,delta_t,N_bodies,M)
             else:
                 print("please specify either rk4 or euler only")
                 exit()

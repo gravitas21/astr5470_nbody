@@ -21,6 +21,21 @@ def euler(p,v,delta_t,N_bodies,M):
     p, v = p + dpdt*delta_t, v + dvdt*delta_t
     return p, v
 
+def leapfrog(p,v,delta_t,N_bodies,M):
+    p_nphalf = np.zeros(p.shape)
+    p_npone  = np.zeros(p.shape)
+    v_nphalf = np.zeros(v.shape)
+    v_npone  = np.zeros(v.shape)
+    # positions and velocities at half time step
+    p_nphalf = p + v*delta_t/2
+    v_nphalf = v
+    # velocities and accelerations at half time step
+    dpdt, dvdt = Nbody_derivatives(p_nphalf, v_nphalf, N_bodies, M)
+    # update position and velocity at full time step
+    v_npone = v + dvdt*delta_t
+    p_npone = p_nphalf+v_npone*delta_t/2
+    return p_npone,v_npone
+
 def Nbody_derivatives_twobody(pos, vel, N_bodies, M):
     """
     ODE equations governing our system:
