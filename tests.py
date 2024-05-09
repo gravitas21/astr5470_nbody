@@ -1,4 +1,5 @@
 from integrators import rk4,euler,leapfrog,hermite
+from outputs import read_saved_orbits,plot_orbit_xyplane
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -75,3 +76,13 @@ test_time_reversal(integrator='rk4')
 test_time_reversal(integrator='euler')
 test_time_reversal(integrator='leapfrog')
 test_time_reversal(integrator='hermite')
+
+def test_saved_orbits(outfile):
+    """
+    Test if function to read the saved orbits gives orbits that match the calculated ones
+    """
+    ## Read the saved orbits
+    N_bodies,names,masses,positions,velocities = read_saved_orbits(outfile)
+    ## Plot the orbits
+    plot_orbit_xyplane(positions,names,test=True)
+test_saved_orbits(outfile='output.txt')
