@@ -11,14 +11,14 @@ Here, `input.txt`, supplied to the `init` argument, is the input file with names
 An example input file is shown below.
 
 ```
-6,10.0,0.001,0.25 \\
-1.0,1.651e-7,2.44e-6,3.0e-6,3.22e-7,9.54e-4 \\
-0.0,0.387,0.72,1.0,1.54,5.20 \\
-0.0,0.0,0.0,0.0,0.0,0.0 \\
-0.0,0.0,0.0,0.0,0.0,0.0 \\
-0.0,0.0,0.0,0.0,0.0,0.0 \\
-0.0,1.578,1.175,1.0,0.8,0.438 \\
-0.0,0.0,0.0,0.0,0.0,0.0 \\
+6,10.0,0.001,0.25
+1.0,1.651e-7,2.44e-6,3.0e-6,3.22e-7,9.54e-4
+0.0,0.387,0.72,1.0,1.54,5.20
+0.0,0.0,0.0,0.0,0.0,0.0
+0.0,0.0,0.0,0.0,0.0,0.0
+0.0,0.0,0.0,0.0,0.0,0.0
+0.0,1.578,1.175,1.0,0.8,0.438
+0.0,0.0,0.0,0.0,0.0,0.0
 Sun,Mercury,Venus,Earth,Mars,Jupiter
 ```
 
@@ -31,12 +31,12 @@ We can specify the integrator `alg` to be either `euler`,`rk4`,`leapfrog` or `he
 The first line of the output file specifies the names and masses of the particles in the simulation, separated by an underscore `_`. The following blocks store the positions and velocities of each particle for the snapshot specified in `# t = $t_{snap}$` line, where `$t_{\snap}$` is the time of the snapshot. An example output file is shown below:
 
 ```
-#Sun_1.0,Mercury_1.651e-07,Venus_2.44e-06,Earth_3e-06,Mars_3.22e-07,Jupiter_0.000954 \\
-#t = 0 \\
-0.0,0.0,0.0,0.0,0.0,0.0 \\
-0.387,0.0,0.0,0.0,1.578,0.0 \\
-0.72,0.0,0.0,0.0,1.175,0.0 \\
-1.0,0.0,0.0,0.0,1.0,0.0 \\
-1.54,0.0,0.0,0.0,0.8,0.0 \\
+#Sun_1.0,Mercury_1.651e-07,Venus_2.44e-06,Earth_3e-06,Mars_3.22e-07,Jupiter_0.000954
+#t = 0
+0.0,0.0,0.0,0.0,0.0,0.0
+0.387,0.0,0.0,0.0,1.578,0.0
+0.72,0.0,0.0,0.0,1.175,0.0
+1.0,0.0,0.0,0.0,1.0,0.0
+1.54,0.0,0.0,0.0,0.8,0.0
 5.2,0.0,0.0,0.0,0.438,0.0
 ```
