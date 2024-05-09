@@ -7,7 +7,6 @@ from outputs import plot_orbit_xyplane,save_orbits
 
 #TODO
 ## Document the code in README and create a Github wiki page
-## Implement one more non-trivial tests
 
 # Defining main function
 def main():
