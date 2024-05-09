@@ -3,12 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 from setup import read_input_file,read_command_line,run_Nbody
-from plots import plot_orbit_xyplane
+from outputs import plot_orbit_xyplane,save_orbits
 
 #TODO
 ## Document the code in README and create a Github wiki page
 ## Create output routines
-## Implement three non-trivial tests
+## Implement two non-trivial tests
 
 # Defining main function
 def main():
@@ -30,8 +30,11 @@ def main():
     positions, velocities, times = run_Nbody(N_bodies,M,pos,vel,tend,delta_t,tframe,integrator)
     #print(positions)
 
-    ## Plot the orbit
+    ## Plot the orbits
     plot_orbit_xyplane(positions,names)
+
+    ## Save the orbits
+    save_orbits(outputfile,times,names,M,positions,velocities)
 
 # Using the special variable
 # __name__

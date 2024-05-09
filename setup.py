@@ -60,6 +60,10 @@ def run_Nbody(N_bodies,M,pos,vel,tend,delta_t,tframe,integrator):
     positions = []
     velocities = []
     times = []
+    ## save initial conditions 
+    positions.append(pos.copy())
+    velocities.append(vel.copy())
+    times.append(t)
     while t<tend :
         while t < tnext :
             #delta_t = min(delta_t,tnext-t)
