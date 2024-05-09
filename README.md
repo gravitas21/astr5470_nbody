@@ -28,7 +28,7 @@ We can specify the integrator `alg` to be either `euler`,`rk4`,`leapfrog` or `he
 
 `read_saved_orbits(outfile='output.txt')`
 
-The first line of the output file specifies the names and masses of the particles in the simulation, separated by an underscore `_`. The following blocks store the positions and velocities of each particle for the snapshot specified in `# t = $t_{snap}$` line, where `$t_{\snap}$` is the time of the snapshot. An example output file is shown below:
+The first line of the output file specifies the names and masses of the particles in the simulation, separated by an underscore `_`. The following blocks store the positions and velocities of each particle for the snapshot specified in `# t = t_snap` line, where `$t_snap$` is the time of the snapshot. An example output file is shown below:
 
 ```
 #Sun_1.0,Mercury_1.651e-07,Venus_2.44e-06,Earth_3e-06,Mars_3.22e-07,Jupiter_0.000954
