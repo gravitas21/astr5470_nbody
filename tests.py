@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def test_time_reversal(integrator):
+    """
+    Tests the time reversal symmetry of the specified N-body integrator
+    Evolves the orbit forward in time, and then in reverse
+    Plots the orbit to test whether time reversal symmetry is preserved.
+    """
     t0 = 0
     dt = 0.1
     t1 = 100
