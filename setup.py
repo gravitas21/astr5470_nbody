@@ -5,6 +5,11 @@ from integrators import rk4,euler,leapfrog,hermite,Nbody_derivatives
 
 # Read command-line arguments
 def read_command_line():
+    """
+    Reads the user inputs from command line
+    Inputs include file with orbital parameters, integration algorithm to use,
+    and output file to store the time evolution of orbits
+    """
     # Create an ArgumentParser object
     parser = argparse.ArgumentParser(description ='Run n-body integration for particles in input file using specified algorithm')
     # Add an argument for each input
@@ -21,6 +26,9 @@ def read_command_line():
 
 # Read initial_conditions
 def read_input_file(file):
+    """
+    Reads the initial orbital parameters of all particles from the input file
+    """
     with open(file,'r') as f:
         lines = f.readlines()
         N_bodies,tend,delta_t,tframe = lines[0][:-1].split(',')
@@ -43,6 +51,10 @@ def read_input_file(file):
 
 # Setup the N-body integration
 def run_Nbody(N_bodies,M,pos,vel,tend,delta_t,tframe,integrator):
+    """
+    Runs the orbital integration based on the chosen algorithm,
+    and returns the orbital parameters at different times
+    """
     t = 0
     tnext = tframe
     positions = []
