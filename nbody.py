@@ -5,9 +5,6 @@ import math
 from setup import read_input_file,read_command_line,run_Nbody
 from outputs import plot_orbit_xyplane,save_orbits
 
-#TODO
-## Document the code in README and create a Github wiki page
-
 # Defining main function
 def main():
     """
