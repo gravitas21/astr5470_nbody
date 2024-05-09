@@ -89,6 +89,25 @@ def Nbody_derivatives(pos, vel, N_bodies, M):
             dvdt[i] += Fij
     return dpdt, dvdt
 
+def total_energy(pos, vel, N_bodies, M):
+    """
+    Calculation of total energy of the system
+    """
+    G = 1.0
+    totKE = 0.0
+    totPE = 0.0
+    for i in range(N_bodies) :
+        totKE += 0.5*M[i]*np.sum(vel[i]**2)
+        for j in range(N_bodies) :
+            if i == j :
+                continue
+            r = np.linalg.norm( pos[j]-pos[i])
+            Eij = G*M[i]*M[j]/r
+            #print(i,j,r,Eij)
+            totPE += Eij
+    totE = totKE + 0.5*totPE
+    return totE
+
 def hermite_derivatives(pos, vel, N_bodies, M):
     """
     equations for acceleration and its derivatives for the Hermite scheme
